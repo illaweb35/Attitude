@@ -2,25 +2,23 @@
 
 namespace App\DataFixtures;
 
-use DateInterval;
-use Faker\Factory;
-use App\Entity\User;
+use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\Dance;
 use App\Entity\Lesson;
 use App\Entity\Member;
-use App\Entity\Article;
-use App\Entity\Category;
-use App\Entity\Prospect;
 use App\Entity\Professor;
+use App\Entity\Prospect;
+use App\Entity\User;
 use App\Service\OlderCalculator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
     private $passwordEncoder;
-
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -63,8 +61,6 @@ class AppFixtures extends Fixture
                 ->setCity($faker->city);
             $manager->persist($professor);
 
-
-
             /* Dance */
             for ($d = 1; $d <= 3; $d++) {
                 $dance = new Dance();
@@ -90,9 +86,8 @@ class AppFixtures extends Fixture
                         ->setLat($faker->latitude(47, 49))
                         ->setLon($faker->longitude(-2, 2))
                         ->setStartHour($faker->dateTime('22 hours', '+12 hours'));
-                    $duration = $lesson->getStartHour()->add(new \DateInterval('PT2H'));
+                    $duration = $lesson->getStartHour(new \DateInterval('PT2H'));
                     $lesson->setEndHour($duration);
-
 
                     $manager->persist($lesson);
 
