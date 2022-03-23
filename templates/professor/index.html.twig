@@ -4,68 +4,68 @@
 {% endblock %}
 
 {% block content %}
-    <section
-        class="uk-section">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <p>Professeurs</p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<p>Professeurs</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container uk-margin-top">
-            <h1>Professor index</h1>
-            <div class="uk-float-right">
-                <a class="uk-button uk-button-primary" href="{{ path('professor_new') }}">Ajouter +</a>
-            </div>
+		<div class="uk-container uk-margin-top">
+			<h1>Professor index</h1>
+			<div class="uk-float-right">
+				<a class="uk-button uk-button-primary" href="{{ path('professor_new') }}">Ajouter +</a>
+			</div>
 
-            <table class="uk-table uk-table-hover">
-                <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Nom Prénom</th>
-                        <th>Email</th>
-                        <th>Téléphone Fixe</th>
-                        <th>Mobile</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for professor in professors %}
-                        <tr>
-                            <td>
-                                <a href="{{ path('professor_show',{'slug':professor.slug})}}" uk-tooltip="title: Voir +"><img class="uk-border-circle" data-src="{{ asset('img/uploads/' ~ professor.image)}}" alt="{{professor.imageCaption}}" width="60" uk-img></a>
-                            </td>
-                            <td>
-                                <p>{{ professor.fullName }}</p>
-                            </td>
-                            <td>
-                                <p class="uk-text-small">{{ professor.email }}</p>
-                            </td>
-                            <td>
-                                <p class="uk-text-small">{{ professor.phoneNumber|formatPhone(professor.phoneNumber) }}</p>
-                            </td>
-                            <td>
-                                <p class="uk-text-small">{{ professor.mobileNumber|formatPhone(professor.mobileNumber) }}</p>
-                            </td>
-                            <td>
-                                <a class="uk-button uk-button-link" href="{{ path('professor_edit', {'slug': professor.slug}) }}" uk-icon="icon: file-edit" uk-tooltip="title: Modifier la fiche {{professor.fullName}}"></a>
-                            </td>
-                        </tr>
-                    </div>
-                </tbody>
-            </td>
-        </tr>
-    {% else %}
-        <tr>
-            <td colspan="12">no records found</td>
-        </tr>
-    {% endfor %}
+			<table class="uk-table uk-table-hover">
+				<thead>
+					<tr>
+						<th>Avatar</th>
+						<th>Nom Prénom</th>
+						<th>Email</th>
+						<th>Téléphone Fixe</th>
+						<th>Mobile</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for professor in professors %}
+						<tr>
+							<td>
+								<a href="{{ path('professor_show',{'slug':professor.slug})}}" uk-tooltip="title: Voir +"><img class="uk-border-circle" data-src="{{ asset('img/uploads/' ~ professor.image)}}" alt="{{professor.imageCaption}}" width="60" uk-img></a>
+							</td>
+							<td>
+								<p>{{ professor.fullName }}</p>
+							</td>
+							<td>
+								<p class="uk-text-small">{{ professor.email }}</p>
+							</td>
+							<td>
+								<p class="uk-text-small">{{ professor.phoneNumber|formatPhone(professor.phoneNumber) }}</p>
+							</td>
+							<td>
+								<p class="uk-text-small">{{ professor.mobileNumber|formatPhone(professor.mobileNumber) }}</p>
+							</td>
+							<td>
+								<a class="uk-button uk-button-link" href="{{ path('professor_edit', {'slug': professor.slug}) }}" uk-icon="icon: file-edit" uk-tooltip="title: Modifier la fiche {{professor.fullName}}"></a>
+							</td>
+						</tr>
+					</div>
+				</tbody>
+			</td>
+		</tr>
+	{% else %}
+		<tr>
+			<td colspan="12">no records found</td>
+		</tr>
+	{% endfor %}
 </tbody></table></div></section>{% endblock %}

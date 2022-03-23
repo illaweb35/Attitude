@@ -3,95 +3,95 @@
 {% block title %}Lesson
 {% endblock %}
 {% block stylesheets %}
-    {{parent()}}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+	{{parent()}}
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 {% endblock %}
 {% block body %}
-    <section
-        class="uk-section uk-section-default">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section uk-section-default">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <a href="{{path('lesson_index')}}">Leçons</a>
-                </li>
-                <li>
-                    <p>Leçon:
-                        <em>{{lesson.title}}</em>
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<a href="{{path('lesson_index')}}">Leçons</a>
+				</li>
+				<li>
+					<p>Leçon:
+						<em>{{lesson.title}}</em>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container">
-            <h1>Leçon :
-                {{lesson.title|capitalize}}</h1>
-            <article class="uk-article">
+		<div class="uk-container">
+			<h1>Leçon :
+				{{lesson.title|capitalize}}</h1>
+			<article class="uk-article">
 
-                <p class="uk-article-meta">pour la danse
-                    <a class="uk-button uk-button-link" href="{{path('dance_show',{'slug':lesson.dance.slug})}}" uk-tooltip="title: Voir la dance">
-                        <strong>{{lesson.dance}}</strong>
-                    </a>
-                </p>
-                <p class="uk-text-lead">{{lesson.subTitle}}</p>
-                <hr class="uk-divider-icon">
-                <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+				<p class="uk-article-meta">pour la danse
+					<a class="uk-button uk-button-link" href="{{path('dance_show',{'slug':lesson.dance.slug})}}" uk-tooltip="title: Voir la dance">
+						<strong>{{lesson.dance}}</strong>
+					</a>
+				</p>
+				<p class="uk-text-lead">{{lesson.subTitle}}</p>
+				<hr class="uk-divider-icon">
+				<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
 
-                    <div>
-                        <p>Ce cours à lieu le :
-                            <strong>
-                                {{lesson.dayLesson}}</strong>
-                        </p>
-                        <p>Les horaires pour ce cours sont
-                        </p>
-                        <p>De &nbsp;
-                            {{lesson.startHour|date('H:i')}}&nbsp; à &nbsp;{{lesson.endHour|date('H:i')}}
-                        </p>
+					<div>
+						<p>Ce cours à lieu le :
+							<strong>
+								{{lesson.dayLesson}}</strong>
+						</p>
+						<p>Les horaires pour ce cours sont
+						</p>
+						<p>De &nbsp;
+							{{lesson.startHour|date('H:i')}}&nbsp; à &nbsp;{{lesson.endHour|date('H:i')}}
+						</p>
 
-                        <hr>
+						<hr>
 
-                        <p>Le cours est situé à l'adresse suivante :</p>
-                        <p>{{lesson.address}}
-                            &nbsp;{{lesson.postCode}}
-                            &nbsp;{{lesson.city}}</p>
-                        <p id="lat">{{lesson.lat}}</p>
-                        <p id="lon">{{lesson.lon}}</p>
-                    </div>
-                    <div>
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <h3 class="uk-card-title">Carte</h3>
-                            <div id="mapid" style="height:280px"></div>
-                        </div>
-                    </div>
+						<p>Le cours est situé à l'adresse suivante :</p>
+						<p>{{lesson.address}}
+							&nbsp;{{lesson.postCode}}
+							&nbsp;{{lesson.city}}</p>
+						<p id="lat">{{lesson.lat}}</p>
+						<p id="lon">{{lesson.lon}}</p>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">
+							<h3 class="uk-card-title">Carte</h3>
+							<div id="mapid" style="height:280px"></div>
+						</div>
+					</div>
 
-                </div>
-                <hr class="uk-divider-icon">
-                <div class="uk-grid-small uk-grid-divider" uk-grid>
-                    <a class="uk-button uk-button-link" href="javascript:history.go(-1)" uk-icon="icon: arrow-left;ratio:1.5" uk-tooltip="title: Page précédente"></a>
-                    <a class="uk-button uk-button-text" href="{{ path('lesson_index') }}">retour à la liste</a>
-                    {% if is_granted("ROLE_USER") %}
-                        <a class="uk-button uk-button-link" href="{{ path('lesson_edit', {'slug': lesson.slug}) }}" uk-icon="icon: file-edit" uk-tooltip="title: Modification de la leçon {{lesson.title}}"></a>
+				</div>
+				<hr class="uk-divider-icon">
+				<div class="uk-grid-small uk-grid-divider" uk-grid>
+					<a class="uk-button uk-button-link" href="javascript:history.go(-1)" uk-icon="icon: arrow-left;ratio:1.5" uk-tooltip="title: Page précédente"></a>
+					<a class="uk-button uk-button-text" href="{{ path('lesson_index') }}">retour à la liste</a>
+					{% if is_granted("ROLE_USER") %}
+						<a class="uk-button uk-button-link" href="{{ path('lesson_edit', {'slug': lesson.slug}) }}" uk-icon="icon: file-edit" uk-tooltip="title: Modification de la leçon {{lesson.title}}"></a>
 
-                        <a class="uk-button uk-button-link" href="#delete-confirm" uk-toggle>
-                            <span uk-icon="icon: trash" uk-tooltip="title: Supprimer la leçon {{lesson.title}}"></span>
-                        </a>
-                    {% endif %}
+						<a class="uk-button uk-button-link" href="#delete-confirm" uk-toggle>
+							<span uk-icon="icon: trash" uk-tooltip="title: Supprimer la leçon {{lesson.title}}"></span>
+						</a>
+					{% endif %}
 
-                </div>
+				</div>
 
-            </article>
-        </div>
-    </section>
-    {{ include('lesson/_delete_form.html.twig') }}
+			</article>
+		</div>
+	</section>
+	{{ include('lesson/_delete_form.html.twig') }}
 {% endblock %}
 {% block javascripts %}
-    {{parent()}}
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
-    <script src="{{asset('js/mapid.js')}}"></script>
+	{{parent()}}
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+	<script src="{{asset('js/mapid.js')}}"></script>
 
 {% endblock %}

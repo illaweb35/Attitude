@@ -4,39 +4,39 @@
 {% endblock %}
 
 {% block content %}
-    <section
-        class="uk-section uk-section-default">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section uk-section-default">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <a href="{{path('member_index')}}">Elèves</a>
-                </li>
-                <li>
-                    <p>Elève:
-                        <em>{{member.userFirstName}}</em>
-                        _ Modification
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<a href="{{path('member_index')}}">Elèves</a>
+				</li>
+				<li>
+					<p>Elève:
+						<em>{{member.userFirstName}}</em>
+						_ Modification
+					</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container">
-            <h1>Modification de l'inscription de
-                {{member.userFirstName}}</h1>
+		<div class="uk-container">
+			<h1>Modification de l'inscription de
+				{{member.userFirstName}}</h1>
 
-            {{ include('member/_form.html.twig', {'button_label': 'Update'}) }}
+			{{ include('member/_form.html.twig', {'button_label': 'Update'}) }}
 
-            <a href="{{ path('member_index') }}">back to list</a>
+			<a href="{{ path('member_index') }}">back to list</a>
 
-            {{ include('member/_delete_form.html.twig') }}</div>
+			{{ include('member/_delete_form.html.twig') }}</div>
 
-    </section>
+	</section>
 
 
 {% endblock %}

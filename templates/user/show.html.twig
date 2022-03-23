@@ -4,59 +4,59 @@
 {% endblock %}
 
 {% block content %}
-    <section
-        class="uk-section">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <a href="{{path('user_index')}}">Utilisateurs</a>
-                </li>
-                <li>
-                    <p>Utilisateur:
-                        <em>{{user.pseudo}}</em>
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<a href="{{path('user_index')}}">Utilisateurs</a>
+				</li>
+				<li>
+					<p>Utilisateur:
+						<em>{{user.pseudo}}</em>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container">
-            <h1>User
-                {{user.pseudo}}</h1>
-            <article class="uk-article">
-                <h1 class="uk-article-title">
-                    {{user.pseudo}}
-                </h1>
-                <img data-src="{{ asset('img/uploads/' ~ user.image)}}" alt="{{user.imageCaption}}" uk-img>
-                <p class="uk-text-lead">
-                    {% for role in user.roles %}
-                        <ul>
-                            <li>{{role}}</li>
-                        </ul>
-                    {% endfor %}
-                </p>
-                <div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid>
-                    <div>
-                        <a class="uk-button uk-button-text" href="{{ path('user_index') }}">back to list</a>
-                    </div>
-                    {% if is_granted("ROLE_USER") %}
-                        <div>
-                            <a class="uk-button uk-button-link" href="{{ path('user_edit', {'slug':user.slug}) }}" uk-icon="icon: file-edit"></a>
-                        </div>
-                        <div>
-                            <a href="#delete-confirm" uk-toggle>
-                                <span uk-icon="icon: trash"></span>
-                            </a>
-                        {% endif %}
-                    </div>
-                </article>
-            </div>
-        </section>
-        {{ include('user/_delete_form.html.twig') }}
+		<div class="uk-container">
+			<h1>User
+				{{user.pseudo}}</h1>
+			<article class="uk-article">
+				<h1 class="uk-article-title">
+					{{user.pseudo}}
+				</h1>
+				<img data-src="{{ asset('img/uploads/' ~ user.image)}}" alt="{{user.imageCaption}}" uk-img>
+				<p class="uk-text-lead">
+					{% for role in user.roles %}
+						<ul>
+							<li>{{role}}</li>
+						</ul>
+					{% endfor %}
+				</p>
+				<div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid>
+					<div>
+						<a class="uk-button uk-button-text" href="{{ path('user_index') }}">back to list</a>
+					</div>
+					{% if is_granted("ROLE_USER") %}
+						<div>
+							<a class="uk-button uk-button-link" href="{{ path('user_edit', {'slug':user.slug}) }}" uk-icon="icon: file-edit"></a>
+						</div>
+						<div>
+							<a href="#delete-confirm" uk-toggle>
+								<span uk-icon="icon: trash"></span>
+							</a>
+						{% endif %}
+					</div>
+				</article>
+			</div>
+		</section>
+		{{ include('user/_delete_form.html.twig') }}
 
-    {% endblock %}
+	{% endblock %}

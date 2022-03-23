@@ -4,98 +4,98 @@
 {% endblock %}
 
 {% block content %}
-    <section
-        class="uk-section">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <a href="{{path('member_index')}}">Elèves</a>
-                </li>
-                <li>
-                    <p>Elève:
-                        <em>{{member.userFirstName}}</em>
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<a href="{{path('member_index')}}">Elèves</a>
+				</li>
+				<li>
+					<p>Elève:
+						<em>{{member.userFirstName}}</em>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container">
+		<div class="uk-container">
 
-            <h1>Elève</h1>
-            <article class="uk-article">
-                <div class="uk-grid-divider" uk-grid>
-                    <div class="uk-width-auto">
-                        {% if member.image %}
-                            <img data-src="{{member.image}}" alt="{{member.imageCaption}}" uk-img>
-                        {% else %}
-                            <img data-src="{{member.image}}" alt="{{member.imageCaption}}" uk-img>
-                        {% endif %}
+			<h1>Elève</h1>
+			<article class="uk-article">
+				<div class="uk-grid-divider" uk-grid>
+					<div class="uk-width-auto">
+						{% if member.image %}
+							<img data-src="{{member.image}}" alt="{{member.imageCaption}}" uk-img>
+						{% else %}
+							<img data-src="{{member.image}}" alt="{{member.imageCaption}}" uk-img>
+						{% endif %}
 
-                    </div>
-                    <div>
-                        <h1 class="uk-article-title">{{ member.userFullName}}</h1>
-                        <p>Age :
-                            {{member.older}}
-                            ans</p>
-                        <p>Est inscrit pour le cours :
-                            <strong>{{member.lesson}}</strong>
-                        </p>
-                        <p class="uk-article-meta">Date de naissance :
-                            {{member.birthday|date('d M Y')}}</p>
-                    </div>
-                </div>
-                <hr class="uk-divider-icon">
-                <h2 class="uk-text-center">Responsable de l'élève</h2>
-                <div class="uk-child-width-1-2@s uk-grid-divider" uk-grid>
+					</div>
+					<div>
+						<h1 class="uk-article-title">{{ member.userFullName}}</h1>
+						<p>Age :
+							{{member.older}}
+							ans</p>
+						<p>Est inscrit pour le cours :
+							<strong>{{member.lesson}}</strong>
+						</p>
+						<p class="uk-article-meta">Date de naissance :
+							{{member.birthday|date('d M Y')}}</p>
+					</div>
+				</div>
+				<hr class="uk-divider-icon">
+				<h2 class="uk-text-center">Responsable de l'élève</h2>
+				<div class="uk-child-width-1-2@s uk-grid-divider" uk-grid>
 
-                    <div class="uk-with-auto">
-                        <p>Nom & Prénom :
-                            <strong>{{member.fullName}}</strong>
-                        </p>
-                        <div class=" uk-grid-small uk-grid-divider" uk-grid>
-                            <p>Téléphone:&nbsp;
-                                {{member.phoneNumber|formatPhone(member.phoneNumber)}}
-                            </p>
-                            <p>mobile :&nbsp;
-                                {{member.mobileNumber|formatPhone(member.mobileNumber)}}</p>
-                        </div>
-                        <p>Email : &nbsp;
-                            {{member.email}}</p>
-                        <h4>Adresse :</h4>
-                        <p>{{member.address}}</p>
-                        <p>{{member.postCode}}
-                            &nbsp;
-                            {{member.city}}</p>
-                    </div>
-                    <div>
-                        <p>informations complémentaires :</p>
-                        <p>{{member.infos}}</p>
-                    </div>
-                </div>
-            </article>
-            <hr class="uk-divider-icon">
+					<div class="uk-with-auto">
+						<p>Nom & Prénom :
+							<strong>{{member.fullName}}</strong>
+						</p>
+						<div class=" uk-grid-small uk-grid-divider" uk-grid>
+							<p>Téléphone:&nbsp;
+								{{member.phoneNumber|formatPhone(member.phoneNumber)}}
+							</p>
+							<p>mobile :&nbsp;
+								{{member.mobileNumber|formatPhone(member.mobileNumber)}}</p>
+						</div>
+						<p>Email : &nbsp;
+							{{member.email}}</p>
+						<h4>Adresse :</h4>
+						<p>{{member.address}}</p>
+						<p>{{member.postCode}}
+							&nbsp;
+							{{member.city}}</p>
+					</div>
+					<div>
+						<p>informations complémentaires :</p>
+						<p>{{member.infos}}</p>
+					</div>
+				</div>
+			</article>
+			<hr class="uk-divider-icon">
 
-            <div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid>
-                <div>
-                    <a class="uk-button uk-button-text" href="{{ path('member_index') }}">back to list</a>
-                </div>
-                {% if is_granted("ROLE_USER") %}
-                    <div>
-                        <a class="uk-button uk-button-link" href="{{ path('member_edit', {'slug':member.slug}) }}" uk-icon="icon: file-edit"></a>
-                    </div>
-                    <div>
-                        <a href="#delete-confirm" uk-toggle>
-                            <span uk-icon="icon: trash"></span>
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-        </section>
-        {{include('member/_delete_form.html.twig')}}
-    {% endblock %}
+			<div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid>
+				<div>
+					<a class="uk-button uk-button-text" href="{{ path('member_index') }}">back to list</a>
+				</div>
+				{% if is_granted("ROLE_USER") %}
+					<div>
+						<a class="uk-button uk-button-link" href="{{ path('member_edit', {'slug':member.slug}) }}" uk-icon="icon: file-edit"></a>
+					</div>
+					<div>
+						<a href="#delete-confirm" uk-toggle>
+							<span uk-icon="icon: trash"></span>
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		</section>
+		{{include('member/_delete_form.html.twig')}}
+	{% endblock %}

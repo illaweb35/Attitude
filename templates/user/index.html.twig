@@ -4,74 +4,74 @@
 {% endblock %}
 
 {% block content %}
-    <section
-        class="uk-section">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <p>Utilisateurs</p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<p>Utilisateurs</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container">
-            <h1>Liste des utilisateurs</h1>
-            <div class="uk-float-right">
-                <a class="uk-button uk-button-primary" href="{{ path('user_new') }}">Create new</a>
-            </div>
-            <table class="uk-table uk-table-hover">
-                <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Email</th>
-                        <th>Pseudo</th>
-                        <th>Role</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for user in users %}
-                        <tr>
-                            <td>
-                                <a href="{{ path('user_show',{'slug':user.slug})}}">
-                                    <img class="uk-border-circle" data-src="{{asset('img/uploads/' ~ user.image)}}" width="40" alt="{{user.imageCaption}}" uk-img>
-                                </a>
-                            </td>
-                            <td>
-                                <p>{{ user.email }}</p>
-                            </td>
-                            <td>
-                                <p>{{ user.pseudo }}</p>
-                            </td>
-                            <td>
-                                {% for role in user.roles %}
-                                    <ul class="uk-list">
-                                        <li class="uk-text-small">
-                                            {% if role == 'ROLE_ADMIN' %}Administrateur{% else %}Utilisateur
-                                            {% endif %}
-                                        </li>
-                                    </ul>
-                                {% endfor %}
-                            </td>
-                            <td>
-                                <div class="uk-grid-small uk-grid-divider" uk-grid>
-                                    <a class="uk-button uk-button-link" href="{{ path('user_edit', {'slug': user.slug}) }}" uk-icon="icon:file-edit" uk-tooltip="title: Modifier {{user.pseudo}}"></a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </tbody>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-    </tbody>
+		<div class="uk-container">
+			<h1>Liste des utilisateurs</h1>
+			<div class="uk-float-right">
+				<a class="uk-button uk-button-primary" href="{{ path('user_new') }}">Create new</a>
+			</div>
+			<table class="uk-table uk-table-hover">
+				<thead>
+					<tr>
+						<th>Avatar</th>
+						<th>Email</th>
+						<th>Pseudo</th>
+						<th>Role</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>
+								<a href="{{ path('user_show',{'slug':user.slug})}}">
+									<img class="uk-border-circle" data-src="{{user.avatar}}" width="40" alt="{{user.imageCaption}}" uk-img>
+								</a>
+							</td>
+							<td>
+								<p>{{ user.email }}</p>
+							</td>
+							<td>
+								<p>{{ user.pseudo }}</p>
+							</td>
+							<td>
+								{% for role in user.roles %}
+									<ul class="uk-list">
+										<li class="uk-text-small">
+											{% if role == 'ROLE_ADMIN' %}Administrateur{% else %}Utilisateur
+											{% endif %}
+										</li>
+									</ul>
+								{% endfor %}
+							</td>
+							<td>
+								<div class="uk-grid-small uk-grid-divider" uk-grid>
+									<a class="uk-button uk-button-link" href="{{ path('user_edit', {'slug': user.slug}) }}" uk-icon="icon:file-edit" uk-tooltip="title: Modifier {{user.pseudo}}"></a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</tbody>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="7">no records found</td>
+			</tr>
+		{% endfor %}
+	</tbody>
 </table></div></section>{% endblock %}

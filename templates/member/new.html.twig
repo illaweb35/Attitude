@@ -4,48 +4,48 @@
 {% endblock %}
 
 {% block body %}
-    <section
-        class="uk-section">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <a href="{{path('lesson_index')}}">Leçons</a>
-                </li>
-                <li>
-                    <p>
-                        <em>Inscription</em>
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<a href="{{path('lesson_index')}}">Leçons</a>
+				</li>
+				<li>
+					<p>
+						<em>Inscription</em>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container">
-            <div class="uk-card uk-card-default uk-card-hover">
-                <div class="uk-card-header">
-                    <h1>Inscription à un cours</h1>
+		<div class="uk-container">
+			<div class="uk-card uk-card-default uk-card-hover">
+				<div class="uk-card-header">
+					<h1>Inscription à un cours</h1>
 
-                    <div class="uk-width-auto uk-align-right">
-                        <p>
-                            <small>
-                                Les champs marqués avec (*) sont obligatoires.</small>
-                        </p>
-                    </div>
-                </div>
-                <div class="uk-card-body">
+					<div class="uk-width-auto uk-align-right">
+						<p>
+							<small>
+								Les champs marqués avec (*) sont obligatoires.</small>
+						</p>
+					</div>
+				</div>
+				<div class="uk-card-body">
 
-                    {{ include('member/_form.html.twig') }}
-                </div>
-                <div class="uk-card-footer">
-                    <a class="uk-button uk-button-link" href="{{ path('home') }}">retour à l'accueil</a>
-                </div>
-            </div>
+					{{ include('member/_form.html.twig') }}
+				</div>
+				<div class="uk-card-footer">
+					<a class="uk-button uk-button-link" href="{{ path('app_home') }}">retour à l'accueil</a>
+				</div>
+			</div>
 
-        </div>
-    </section>
+		</div>
+	</section>
 {% endblock %}

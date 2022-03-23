@@ -4,39 +4,39 @@
 {% endblock %}
 
 {% block content %}
-    <section
-        class="uk-section">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <a href="{{path('professor_index')}}">Professeurs</a>
-                </li>
-                <li>
-                    <p>Professeur: Ajouter
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+				<li>
+					<a href="{{path('professor_index')}}">Professeurs</a>
+				</li>
+				<li>
+					<p>Professeur: Ajouter
+					</p>
+				</li>
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
 
-        <div class="uk-container">
-            <h1>Création d'un Professeur</h1>
+		<div class="uk-container">
+			<h1>Création d'un Professeur</h1>
 
-            {{ include('professor/_form.html.twig') }}
-            <div class="uk-grid uk-grid-small uk-grid-divider uk-margin-top uk-margin-bottom" uk-grid>
-                <div>
-                    <a class="uk-button uk-button-text" href="{{ path('professor_index') }}">
-                        <span uk-icon="icon: arrow-left"></span>
-                        retour à la liste</a>
-                </div>
-            </div>
-        </div>
+			{{ include('professor/_form.html.twig') }}
+			<div class="uk-grid uk-grid-small uk-grid-divider uk-margin-top uk-margin-bottom" uk-grid>
+				<div>
+					<a class="uk-button uk-button-text" href="{{ path('professor_index') }}">
+						<span uk-icon="icon: arrow-left"></span>
+						retour à la liste</a>
+				</div>
+			</div>
+		</div>
 
-    </div>
+	</div>
 </section>{% endblock %}

@@ -4,88 +4,88 @@
 {% endblock %}
 
 {% block content %}
-    <section
-        class="uk-section uk-section-default">
-        <!-- breadCrumb -->
-        <div class="uk-container uk-margin">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <a href="{{path('home')}}">Home</a>
-                </li>
+	<section
+		class="uk-section uk-section-default">
+		<!-- breadCrumb -->
+		<div class="uk-container uk-margin">
+			<ul class="uk-breadcrumb">
+				<li>
+					<a href="{{path('app_home')}}">Home</a>
+				</li>
 
-                <li>
-                    <a href="{{path('member_index')}}">Elèves</a>
-                </li>
+				<li>
+					<a href="{{path('member_index')}}">Elèves</a>
+				</li>
 
-            </ul>
-        </div>
-        <!-- end of breadcrumb -->
+			</ul>
+		</div>
+		<!-- end of breadcrumb -->
 
-        <div class="uk-container">
-            <h1>Liste des élèves</h1>
+		<div class="uk-container">
+			<h1>Liste des élèves</h1>
 
-            <table class="uk-table uk-table-hover">
-                <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Nom</th>
-                        <th>age</th>
-                        <th>Responsable</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Mobile</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for member in members %}
-                        <tr>
+			<table class="uk-table uk-table-hover">
+				<thead>
+					<tr>
+						<th>Avatar</th>
+						<th>Nom</th>
+						<th>age</th>
+						<th>Responsable</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Mobile</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for member in members %}
+						<tr>
 
-                            <td>
-                                <a href="{{ path('member_show',{'slug':member.slug})}}"><img class="uk-border-circle" width="60" data-src="{{ asset('img/uploads/' ~ member.image)}}" alt="{{member.imageCaption}}" uk-img></a>
+							<td>
+								<a href="{{ path('member_show',{'slug':member.slug})}}"><img class="uk-border-circle" width="60" data-src="{{ asset('img/uploads/' ~ member.image)}}" alt="{{member.imageCaption}}" uk-img></a>
 
-                            </td>
-                            <td>
-                                <a href="{{ path('member_show',{'slug':member.slug})}}">
-                                    <p>{{ member.userFullName }}</p>
-                                </a>
-                            </td>
+							</td>
+							<td>
+								<a href="{{ path('member_show',{'slug':member.slug})}}">
+									<p>{{ member.userFullName }}</p>
+								</a>
+							</td>
 
-                            <td>
-                                <p>{{ member.older }}
-                                    <small>
-                                        ans</small>
-                                </p>
-                            </td>
-                            <td>
-                                <p>{{ member.fullName }}</p>
-                            </td>
-                            <td>
-                                <p class="uk-text-small">{{ member.email }}</p>
-                            </td>
-                            <td>
-                                <p class="uk-text-small">{{ member.phoneNumber|formatPhone(member.phoneNumber) }}</p>
-                            </td>
-                            <td>
-                                <p class="uk-text-small">{{ member.mobileNumber|formatPhone(member.mobileNumber) }}</p>
-                            </td>
-                            <td>
-                                <div class="uk-grid-small uk-grid-divider" uk-grid>
-                                    <div>
-                                        <a class="uk-button uk-button-link" href="{{ path('member_edit', {'slug': member.slug}) }}" uk-icon="icon:file-edit" uk-tooltip="title: Modifier {{member.userFullName}}"></a>
-                                    </div>
+							<td>
+								<p>{{ member.older }}
+									<small>
+										ans</small>
+								</p>
+							</td>
+							<td>
+								<p>{{ member.fullName }}</p>
+							</td>
+							<td>
+								<p class="uk-text-small">{{ member.email }}</p>
+							</td>
+							<td>
+								<p class="uk-text-small">{{ member.phoneNumber|formatPhone(member.phoneNumber) }}</p>
+							</td>
+							<td>
+								<p class="uk-text-small">{{ member.mobileNumber|formatPhone(member.mobileNumber) }}</p>
+							</td>
+							<td>
+								<div class="uk-grid-small uk-grid-divider" uk-grid>
+									<div>
+										<a class="uk-button uk-button-link" href="{{ path('member_edit', {'slug': member.slug}) }}" uk-icon="icon:file-edit" uk-tooltip="title: Modifier {{member.userFullName}}"></a>
+									</div>
 
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </tbody>
-            </tr>
-        {% else %}
-            <tr>
-                <td>no records found</td>
-            </tr>
-        {% endfor %}
-    </tbody>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</tbody>
+			</tr>
+		{% else %}
+			<tr>
+				<td>no records found</td>
+			</tr>
+		{% endfor %}
+	</tbody>
 </table>
 {{ pagination.display() }}</div></section>{% endblock %}

@@ -1,34 +1,35 @@
 {{ form_start(form) }}
 
-<form action="" class="uk-grid-small" enctype="multipart/form-data" method="post" uk-grid>
+
+<form action="" enctype="multipart/form-data" method="post">
+	<div class="uk-grid-small uk-grdid-divider" uk-grid>
+		<div>
+			<img src="{{user.avatar}}}" alt="{{user.imageCaption}}" width="150" uk-img>
+		</div>
 
 
-    <div class="uk-width-1-1">
+		<div class="uk-width-1-1">
 
-        <div class="uk-margin">
-            {{form_row(form.imageFile)}}
-            <div class="uk-form-danger">
-                {{form_errors(form.imageFile)}}
-            </div>
 
-            <div class="uk-margin">
-                <label class="uk-form-label">Email</label>
-                {{form_widget(form.email)}}
-                <div class="uk-form-danger">{{form_errors(form.email)}}</div>
-            </div>
-            <div class="uk-margin">
-                <label class="uk-form-label" for="">Pseudo</label>
-                {{form_widget(form.pseudo)}}
-                <div class="uk-form-danger">{{form_errors(form.pseudo)}}</div>
-            </div>
-            <div class="uk-margin">
-                <label class="uk-form-label">Rôles</label>
-                {{form_widget(form.roles)}}
-            </div>
+			<div class="uk-margin">
+				<label class="uk-form-label">Email</label>
+				{{form_widget(form.email)}}
+				<div class="uk-form-danger">{{form_errors(form.email)}}</div>
+			</div>
+			<div class="uk-margin">
+				<label class="uk-form-label" for="">Pseudo</label>
+				{{form_widget(form.pseudo)}}
+				<div class="uk-form-danger">{{form_errors(form.pseudo)}}</div>
+			</div>
+			<div class="uk-margin">
+				<label class="uk-form-label">Rôles</label>
+				{{form_widget(form.roles)}}
+			</div>
 
-            {{ form_widget(form) }}
-            <div class=" uk-margin">
-                <button class="uk-button uk-button-primary">{{ button_label|default('Enregistrer') }}</button>
-            </div>
-
-            {{ form_end(form) }}</form>
+			{{ form_widget(form) }}
+			<div class=" uk-margin">
+				<button class="uk-button uk-button-primary">{{ button_label|default('Enregistrer') }}</button>
+			</div>
+		</div>
+	</div>
+	{{ form_end(form) }}</form>
